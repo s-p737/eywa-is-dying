@@ -17,7 +17,12 @@ const NODE_COLORS = {
 function project(lat: number, lon: number, W: number, H: number) {
   const x = ((lon + 180) / 360) * W;
   const y = ((90 - lat) / 180) * H;
-  return { x, y };
+      return {
+        x,
+        y,
+        label: id,
+        value: 1,
+      };
 }
 
 interface CanvasNode extends NetworkNode {
@@ -55,7 +60,6 @@ function makeSyntheticNode(
 
     // ✅ REQUIRED by NetworkNode
     label: title,
-    value: 1, // or derive something meaningful if you have it
 
     tooltip: {
       title,
