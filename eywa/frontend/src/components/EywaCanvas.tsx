@@ -34,15 +34,40 @@ interface SceneTarget {
 
 // Synthetic tooltip nodes for Pandora scene elements
 function makeSyntheticNode(
-  id: string, type: "forest"|"species"|"carbon",
-  title: string, stat: string, context: string,
-  lat: number, lon: number
+  id: string,
+  type: "forest" | "species" | "carbon",
+  title: string,
+  stat: string,
+  context: string,
+  lat: number,
+  lon: number
 ): NetworkNode {
   return {
-    id, type, lat, lon,
+    id,
+    type,
+    lat,
+    lon,
     alive: true,
-    color: type === "forest" ? "teal" : type === "species" ? "gold" : "red",
-    tooltip: { title, stat, context, source: type === "forest" ? "Global Forest Watch" : type === "species" ? "IUCN Red List" : "NASA / NOAA" },
+    color:
+      type === "forest" ? "teal" :
+      type === "species" ? "gold" :
+      "red",
+
+    // ✅ REQUIRED by NetworkNode
+    label: title,
+    value: 1, // or derive something meaningful if you have it
+
+    tooltip: {
+      title,
+      stat,
+      context,
+      source:
+        type === "forest"
+          ? "Global Forest Watch"
+          : type === "species"
+          ? "IUCN Red List"
+          : "NASA / NOAA",
+    },
   };
 }
 
