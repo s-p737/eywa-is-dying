@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import EywaCanvas from "@/components/EywaCanvas";
+import PandoraBackground from "@/components/PandoraBackground";
 import YearSlider from "@/components/YearSlider";
 import { useNetwork } from "@/hooks/useNetwork";
 
@@ -38,12 +39,13 @@ export default function Home() {
       <style>{`
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-          --void: #020608; --teal: #00c4a7; --teal-bright: #4fffd6;
+          --void: #010810; --teal: #00c4a7; --teal-bright: #4fffd6;
           --gold: #c8a04a; --dying: #c0392b; --text: #b8d4ce; --muted: #4a7a72;
         }
-        html { background: var(--void); scroll-behavior: smooth; }
+        html { background: #010810; scroll-behavior: smooth; }
         body { background: transparent; color: var(--text); font-family: 'EB Garamond', Georgia, serif; overflow-x: hidden; }
-        section { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 60px 40px; position: relative; z-index: 1; pointer-events: none; }        h1 { font-family: 'Cinzel', serif; font-size: clamp(2.4rem,5vw,4rem); font-weight: 600; color: #fff; line-height: 1.1; letter-spacing: 0.02em; }
+        section { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 60px 40px; position: relative; z-index: 1; pointer-events: none; }
+        h1 { font-family: 'Cinzel', serif; font-size: clamp(2.4rem,5vw,4rem); font-weight: 600; color: #fff; line-height: 1.1; letter-spacing: 0.02em; }
         h2 { font-family: 'Cinzel', serif; font-size: clamp(1.3rem,2.5vw,1.8rem); font-weight: 400; color: #fff; letter-spacing: 0.04em; margin-bottom: 20px; }
         p { font-size: clamp(1rem,1.5vw,1.15rem); line-height: 1.75; color: var(--text); margin-bottom: 1.2em; }
         .eyebrow { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--teal); opacity: 0.7; margin-bottom: 20px; }
@@ -73,6 +75,10 @@ export default function Home() {
         @media (max-width:600px) { section{padding:60px 20px} .block-left,.block-right{margin:0;text-align:center} .stat-row{grid-template-columns:1fr} .pull-quote{border-left:none;border-top:1px solid var(--teal);padding-left:0;padding-top:16px;} }
       `}</style>
 
+      {/* Pandora scene — bottom-most layer */}
+      <PandoraBackground />
+
+      {/* Data node network — on top of Pandora */}
       <EywaCanvas data={data} scrollRatio={scrollRatio} />
 
       <div ref={scrollRef} style={{ position: "relative", zIndex: 1, pointerEvents: "none" }}>
@@ -123,10 +129,10 @@ export default function Home() {
             <h2>The canopy is breaking.</h2>
             <div className="divider" />
             <p>
-              Since Avatar premiered, the world has lost forest cover equivalent to the land area of Libya. The trees do not fall all at once — they go node by node, the network thinning before anyone looks up.
+              Since Avatar premiered, the world has lost forest cover equivalent to the land area of Libya. Tree after tree and node after node, the forests slowly die; the network thinning before anyone has a chance to look up.
             </p>
             <div className="pull-quote">
-              "The forest is dying and we cannot see it because we have no Pandora — no interface that makes the loss visible."
+              "The forest is dying and we cannot see it because we have no Pandora. There is no interface that makes this loss visible."
             </div>
             {data && (
               <div className="stat-row">
@@ -160,10 +166,10 @@ export default function Home() {
               In Pandora, Eywa holds the memory of every creature within her network. When a Na'vi dies, they return to her. The grief is communal because the loss is felt by the whole system.
             </p>
             <p>
-              On Earth, a species disappears and there is no system that feels it. No network registers the absence. We built no interface for ecological grief — and so we do not grieve.
+              On Earth, a species disappears and there is no large connected system that feels it. No network registers the absence because humans have not built any interface for ecological grief and so we do not grieve.
             </p>
             <div className="pull-quote">
-              Avatar did not reveal our indifference. It revealed our <em>capacity</em> — and the void where the real world's interface should be.
+              Avatar revealed our <em>capacity</em> and the void where the real world's interface should be.
             </div>
           </div>
         </section>
@@ -175,13 +181,13 @@ export default function Home() {
             <h2>Ecotopia imagined. Pandora rendered.</h2>
             <div className="divider" />
             <p>
-              Ernest Callenbach's Ecotopia (1975) proposed a society restructured around ecological interdependence — one that <em>sees</em> its forest, accounts for it, mourns it when it burns.
+              Ernest Callenbach's Ecotopia (1975) proposed a society restructured around ecological interdependence; one that <em>sees</em> its forest, accounts for it, mourns it when it burns.
             </p>
             <p>
               Cameron solved the interface problem for a fictional planet and grossed $2.9 billion. The question this project asks is: why couldn't we build that for the real one?
             </p>
             <p style={{ opacity: 0.55, fontSize: "0.9rem" }}>
-              Hover any node above to see the real species, region, or measurement station it represents.
+              Click any node to see the real species, region, or measurement station it represents.
             </p>
           </div>
         </section>
@@ -193,13 +199,13 @@ export default function Home() {
             <h2 style={{ color: "#ff9e6d" }}>The glow is going out.</h2>
             <div className="divider" style={{ background: "#ff6b35" }} />
             <p>
-              What you have been watching as you scrolled is not a decoration. The network above is degrading. Connections are breaking. Nodes are going dark. The bioluminescence is fading.
+              What you have been watching as you scrolled is not for decoration or aesthetics. The network above is degrading. Connections are breaking, nodes are going dark, the bioluminescence is fading.
             </p>
             <p>
               This is what ecological collapse looks like when it finally has an interface.
             </p>
             <p style={{ opacity: 0.55, fontSize: "0.9rem" }}>
-              The tragedy of Avatar is not that RDA mined unobtanium. It is that we built a cinema-grade system for grieving a fictional ecosystem and left the real one without a single equivalent.
+              The tragedy of Avatar is that we built a big cinema-grade system for grieving a fictional ecosystem and left our actual ecosystem without a single equivalent.
             </p>
             <div style={{ marginTop: 32 }}>
               <div style={{
