@@ -3,10 +3,10 @@ const BASE = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
 export interface NetworkNode {
   id: string;
   type: "forest" | "species" | "carbon";
-  label: string;
+  label?: string;
   lat: number;
   lon: number;
-  value: number;
+  value?: number;
   color: "teal" | "gold" | "red";
   alive: boolean;
   tooltip: {
