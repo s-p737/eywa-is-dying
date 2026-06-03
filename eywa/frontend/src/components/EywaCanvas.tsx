@@ -17,15 +17,7 @@ const NODE_COLORS = {
 function project(lat: number, lon: number, W: number, H: number) {
   const x = ((lon + 180) / 360) * W;
   const y = ((90 - lat) / 180) * H;
-      return {
-  label: id,
-  value: 1,
-
-        x,
-        y,
-        label: id,
-        value: 1,
-      };
+  return { x, y };
 }
 
 interface CanvasNode extends NetworkNode {
