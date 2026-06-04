@@ -43,9 +43,6 @@ function makeSyntheticNode(
   lon: number
 ): NetworkNode {
   return {
-  label: id,
-  value: 1,
-
     id,
     type,
     lat,
@@ -117,8 +114,6 @@ export default function EywaCanvas({ data, scrollRatio }: EywaCanvasProps) {
       const { x, y } = project(n.lat, n.lon, W, H);
       const jitter = 30;
       return {
-  label: id,
-  value: 1,
 
         ...n,
         cx: Math.max(20, Math.min(W - 20, x + (Math.random() - 0.5) * jitter)),
